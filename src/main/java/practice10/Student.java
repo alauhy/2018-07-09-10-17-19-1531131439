@@ -1,6 +1,6 @@
 package practice10;
 
-public class Student extends Person{
+public class Student extends Person {
     private Klass klass;
 
     public Klass getKlass() {
@@ -12,11 +12,15 @@ public class Student extends Person{
         this.klass = klass;
         this.klass.appendMember(this);
     }
+
+    public void setKlass(Klass klass) {
+        this.klass = klass;
+    }
+
     @Override
     public String introduce() {
-        if(klass.getLeader()!=null && klass.getLeader().getName()==super.getName()){
-            return super.introduce()+" I am a Student. I am Leader of "+klass.getDisplayName()+".";
-        }
-        else return super.introduce()+" I am a Student. I am at "+klass.getDisplayName()+".";
+        if (klass.getLeader() != null && klass.getLeader().getName() == super.getName()) {
+            return super.introduce() + " I am a Student. I am Leader of " + klass.getDisplayName() + ".";
+        } else return super.introduce() + " I am a Student. I am at " + klass.getDisplayName() + ".";
     }
 }

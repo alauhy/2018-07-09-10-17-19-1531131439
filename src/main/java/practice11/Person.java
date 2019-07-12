@@ -22,7 +22,7 @@ public class Person {
 
     private final int id;
 
-    public Person(int id,String name, int age) {
+    public Person(int id, String name, int age) {
         this.name = name;
         this.age = age;
         this.id = id;
@@ -36,11 +36,11 @@ public class Person {
         return age;
     }
 
-    public String introduce(){
-        return "My name is "+this.name+". I am "+this.age+" years old.";
+    public String introduce() {
+        return "My name is " + this.name + ". I am " + this.age + " years old.";
     }
 
     public String basicIntroduce() {
-        return "My name is "+this.name+". I am "+this.age+" years old.";
+        return "My name is " + this.name + ". I am " + this.age + " years old.";
     }
 }
