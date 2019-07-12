@@ -10,18 +10,18 @@ public class Klass {
     private List<Teacher> observers = new ArrayList<Teacher>();
 
 
-    public void attach(Teacher observer){
+    public void attach(Teacher observer) {
         observers.add(observer);
     }
 
-    public void notifyAllObservers(Student student,int mode){
+    public void notifyAllObservers(Student student, int notifyType) {
 
-        for (Teacher observer : observers) {
-            if(mode==1){
-                observer.update(student,this.getDisplayName());
+        for (Teacher teacher : observers) {
+            if (notifyType == 1) {
+                teacher.notifiedTeacherWhenStuentJoin(student, this.getDisplayName());
             }
-            if(mode==2){
-                observer.update2(student,this.getDisplayName());
+            if (notifyType == 2) {
+                teacher.notifiedTeacherWhenStuentBecomeLeader(student, this.getDisplayName());
             }
         }
     }
@@ -38,22 +38,24 @@ public class Klass {
         return number;
 
     }
-    public String getDisplayName(){
-        return "Class "+number;
+
+    public String getDisplayName() {
+        return "Class " + number;
     }
+
     public void appendMember(Student student) {
 
         students.add(student);
-        notifyAllObservers(student,1);
+        notifyAllObservers(student, 1);
 
     }
-    public void assignLeader(Student student){
-        if(students!=null && !students.contains(student)){
-            System.out.println("It is not one of us.");
-        }
-        else {
-            this.leader=student;
-            notifyAllObservers(student,2);
+
+    public void assignLeader(Student student) {
+        if (students != null && !students.contains(student)) {
+            System.out.print("It is not one of us.\n");
+        } else {
+            this.leader = student;
+            notifyAllObservers(student, 2);
         }
 
     }
@@ -62,11 +64,10 @@ public class Klass {
         return students;
     }
 
-    public boolean isIn(Student student){
-        if(students!=null && students.contains(student)){
+    public boolean isIn(Student student) {
+        if (students != null && students.contains(student)) {
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
 }
